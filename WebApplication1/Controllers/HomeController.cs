@@ -5,14 +5,22 @@ namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
-        private IEmployeeRepository _employeeRepository;
+        private readonly IEmployeeRepository _employeeRepository;
         public HomeController(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
         }
-        public string Index()
+        public IEnumerable<Employee> Index()
         {
-            return _employeeRepository.GetEmployee(1).Name;
+            //return _employeeRepository.GetEmployee(1).Name;
+            //return Json(new { id = 1, name = "kasun" });
+            return _employeeRepository.GetAllEmployee();
+        }
+
+        public ObjectResult Details()
+        {
+            Employee employee = _employeeRepository.GetEmployee(2);
+            return new ObjectResult(employee);
             //return Json(new { id = 1, name = "kasun" });
         }
     }

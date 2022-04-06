@@ -3,7 +3,7 @@ using WebApplication1.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();   
-builder.Services.AddMvc(option => option.EnableEndpointRouting = false);
+builder.Services.AddMvc(option => option.EnableEndpointRouting = false).AddXmlSerializerFormatters();
 
 var app = builder.Build();
 
