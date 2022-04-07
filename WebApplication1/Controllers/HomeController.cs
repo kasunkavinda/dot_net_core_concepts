@@ -17,9 +17,9 @@ namespace WebApplication1.Controllers
             return _employeeRepository.GetAllEmployee();
         }
 
-        public ObjectResult Details()
+        public ObjectResult Details(int id)
         {
-            Employee employee = _employeeRepository.GetEmployee(2);
+            Employee employee = _employeeRepository.GetEmployee(id);
             return new ObjectResult(employee);
             //return Json(new { id = 1, name = "kasun" });
         }
